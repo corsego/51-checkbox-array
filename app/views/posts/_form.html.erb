@@ -21,6 +21,14 @@
     <%= form.text_area :content %>
   </div>
 
+  <%= form.label :facilities %>
+  <br>
+  <% Post::TAGS.each do |key| %>
+    <br>
+    <%= form.check_box :tags, { multiple: true, checked: form.object.tags&.include?(key.to_s) }, key, nil %>
+    <%= form.label key %>
+  <% end %>
+
   <div class="actions">
     <%= form.submit %>
   </div>
